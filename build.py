@@ -15,7 +15,7 @@ LINKS = json.loads((ROOT / 'links.json').read_text(encoding='utf-8'))
 PREVIEW = Path(sys.argv[sys.argv.index('--preview') + 1]) if '--preview' in sys.argv else None
 if PREVIEW:
     LINKS.update(kofi='https://ko-fi.com/example', monobank='https://send.monobank.ua/jar/example',
-                 boosty='https://boosty.to/example', usdt_trc20='TExampleWalletAddress000000000000000')
+                 funpay='https://funpay.com/users/example/', usdt_trc20='TExampleWalletAddress000000000000000')
 
 TEXT = {
     'en': dict(
@@ -36,7 +36,7 @@ TEXT = {
         workshop='Get it on the Steam Workshop',
         support='Support the author',
         support_intro='The mod is free and stays free. If you enjoy it and want to help it grow, here is how — thank you!',
-        west='International', ua='Ukraine', ru='Russia', crypto='Crypto',
+        west='International', ua='Ukraine', ru='Russia and CIS', crypto='Crypto',
         copy='Copy', copied='Copied',
         footer='This mod is about the mechanics of drone warfare, not about politics.',
     ),
@@ -58,7 +58,7 @@ TEXT = {
         workshop='Завантажити в Steam Workshop',
         support='Підтримати автора',
         support_intro='Мод безкоштовний і таким залишиться. Якщо він вам подобається і ви хочете допомогти йому рости — ось як. Дякую!',
-        west='Міжнародні', ua='Україна', ru='Росія', crypto='Крипта',
+        west='Міжнародні', ua='Україна', ru='Росія та СНД', crypto='Крипта',
         copy='Копіювати', copied='Скопійовано',
         footer='Мод — про механіку війни дронів, а не про політику.',
     ),
@@ -80,7 +80,7 @@ TEXT = {
         workshop='Скачать в Steam Workshop',
         support='Поддержать автора',
         support_intro='Мод бесплатный и останется таким. Если он вам нравится и хочется помочь ему расти — вот как. Спасибо!',
-        west='Международные', ua='Украина', ru='Россия', crypto='Крипта',
+        west='Международные', ua='Украина', ru='Россия и СНГ', crypto='Крипта',
         copy='Копировать', copied='Скопировано',
         footer='Мод — про механику войны дронов, а не про политику.',
     ),
@@ -102,6 +102,8 @@ def support_links():
         rows.append(('west', 'Patreon', LINKS['patreon']))
     if LINKS.get('monobank'):
         rows.append(('ua', 'Monobank', LINKS['monobank']))
+    if LINKS.get('funpay'):
+        rows.append(('ru', 'FunPay', LINKS['funpay']))
     if LINKS.get('boosty'):
         rows.append(('ru', 'Boosty', LINKS['boosty']))
     return rows
@@ -144,7 +146,7 @@ def funding():
         lines.append(f'ko_fi: {LINKS["kofi"].rstrip("/").split("/")[-1]}')
     if LINKS.get('patreon'):
         lines.append(f'patreon: {LINKS["patreon"].rstrip("/").split("/")[-1]}')
-    custom = [LINKS[k] for k in ('monobank', 'boosty') if LINKS.get(k)]
+    custom = [LINKS[k] for k in ('monobank', 'funpay', 'boosty') if LINKS.get(k)]
     if custom:
         lines.append('custom: [' + ', '.join(f'"{u}"' for u in custom[:4]) + ']')
     return '\n'.join(lines) + '\n' if lines else ''
