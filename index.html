@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Modern Drone Warfare</title>
+<meta name="description" content="Modern Drone Warfare — a RimWorld mod about how drones really fight.">
+<link rel="icon" href="media/icon.png">
+<style>
+:root { --bg:#14171a; --panel:#1d2125; --text:#e7e4dc; --muted:#9aa19a; --accent:#c9a227; --line:#2d3237; }
+@media (prefers-color-scheme: light) { :root { --bg:#f3f1ea; --panel:#ffffff; --text:#1d2125; --muted:#5d6560; --accent:#8a6d0b; --line:#ddd8cc; } }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--text); font:16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+main { max-width:960px; margin:0 auto; padding:24px 16px 48px; }
+.switch { display:flex; gap:8px; justify-content:flex-end; flex-wrap:wrap; margin-bottom:16px; }
+.switch button { background:none; border:1px solid var(--line); color:var(--muted); border-radius:6px; padding:4px 10px; cursor:pointer; font:inherit; }
+.switch button.on { color:var(--text); border-color:var(--accent); }
+.hero img { width:100%; border-radius:10px; display:block; }
+header { display:flex; gap:14px; align-items:center; margin:20px 0 8px; }
+.icon { width:56px; height:56px; border-radius:10px; }
+h1 { margin:0; font-size:1.7rem; }
+.tag { margin:0; color:var(--muted); }
+.intro { font-size:1.08rem; }
+h2 { margin-top:32px; font-size:1.25rem; }
+h3 { margin:0 0 8px; font-size:.95rem; color:var(--muted); font-weight:600; }
+.points li { margin:6px 0; }
+.btn { display:inline-block; padding:9px 16px; border-radius:8px; border:1px solid var(--line); background:var(--panel); color:var(--text); text-decoration:none; font:inherit; cursor:pointer; }
+.btn:hover { border-color:var(--accent); }
+.btn.primary { background:var(--accent); border-color:var(--accent); color:#14171a; font-weight:600; }
+.support { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:4px 20px 18px; margin-top:32px; }
+.group { margin-top:14px; }
+.row { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+.wallet code { font-size:.85rem; word-break:break-all; }
+.gallery { display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:12px; margin-top:28px; }
+.gallery figure { margin:0; }
+.gallery img { width:100%; border-radius:8px; display:block; }
+.foot { color:var(--muted); font-size:.9rem; margin-top:28px; }
+</style>
+</head>
+<body>
+<main>
+<nav class="switch"><button data-set="en">English</button><button data-set="uk">Українська</button><button data-set="ru">Русский</button></nav>
+<div class="hero"><img src="media/preview.png" alt="Modern Drone Warfare"></div>
+<div class="lang" data-lang="en" lang="en" hidden>
+<header><img class="icon" src="media/icon.png" alt=""><div><h1>Modern Drone Warfare</h1><p class="tag">A RimWorld mod</p></div></header>
+<p class="intro">Drone warfare the way it really works: you don&#x27;t just build drones, you fly them — with crews of pilots, observers and technicians, over a radio link that walls, woods, weather and jamming can break.</p>
+<a class="btn primary" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3818148083" target="_blank" rel="noopener">Get it on the Steam Workshop</a>
+<h2>What may surprise you</h2><ul class="points"><li>Crews fight on their own: on alarm they drop their work, run to the launch point and take off; technicians build, arm and charge the drones.</li><li>The link is everything. Five real radio kits, each with its own range and picture, and the enemy retunes its jammers to the ones you fly on most. Fiber-optic FPVs ignore jamming but drag a cable across the map: cut it and the drone goes blind.</li><li>The enemy hunts your operators by direction finding; your video receiver shows where its FPV is heading.</li><li>Night raids by Shahed / Geran-class drones off launch rails, strikes back on the world map, TB2-class planes rolling down a runway.</li><li>What is mounted is what you see: warheads, drops and the satellite modem are drawn on the drone. Real prototype names for your side: Ukrainian, Russian or Western.</li><li>Air defense from jammer guns and nets to flak, lasers, microwaves and GPS spoofing — and your own EW can blind your own drones.</li></ul>
+
+<p class="foot">This mod is about the mechanics of drone warfare, not about politics.</p>
+</div><div class="lang" data-lang="uk" lang="uk" hidden>
+<header><img class="icon" src="media/icon.png" alt=""><div><h1>Сучасна безпілотна війна</h1><p class="tag">Мод для RimWorld</p></div></header>
+<p class="intro">Війна дронів така, якою вона є: дрони мало збудувати, ними треба літати — розрахунками з пілотів, спостерігачів і техніків, через радіозв&#x27;язок, який рвуть стіни, ліс, погода й РЕБ.</p>
+<a class="btn primary" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3818148083" target="_blank" rel="noopener">Завантажити в Steam Workshop</a>
+<h2>Чим може здивувати</h2><ul class="points"><li>Екіпажі воюють самі: за тривогою кидають роботу, біжать на точку й злітають; техніки збирають, споряджають і заряджають дрони.</li><li>Зв&#x27;язок вирішує все. П&#x27;ять реальних радіокомплектів зі своєю дальністю й картинкою, а ворог перебудовує глушилки під ті, на яких ви літаєте найчастіше. Оптоволоконний FPV не боїться РЕБ, але тягне кабель через усю мапу: переріжте — і дрон осліп.</li><li>Ворог пеленгує ваших операторів, а ваш відеоприймач показує, куди летить його FPV.</li><li>Нічні нальоти «Шахедів» із пускових напрямних, удари у відповідь по мапі світу, літаки класу TB2 з розбігом по злітній смузі.</li><li>Що підвішено, те й видно: БЧ, скиди й супутниковий модем намальовані на дроні. Назви реальних прототипів вашої сторони: українські, російські або західні.</li><li>ППО від РЕБ-рушниць і сіток до зеніток, лазерів, НВЧ і підміни GPS — а своя РЕБ може осліпити власні дрони.</li></ul>
+
+<p class="foot">Мод — про механіку війни дронів, а не про політику.</p>
+</div><div class="lang" data-lang="ru" lang="ru" hidden>
+<header><img class="icon" src="media/icon.png" alt=""><div><h1>Современная беспилотная война</h1><p class="tag">Мод для RimWorld</p></div></header>
+<p class="intro">Война дронов такой, какая она есть: дроны мало построить, ими надо летать — расчётами из пилотов, наблюдателей и техников, по радиосвязи, которую рвут стены, лес, погода и РЭБ.</p>
+<a class="btn primary" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3818148083" target="_blank" rel="noopener">Скачать в Steam Workshop</a>
+<h2>Чем может удивить</h2><ul class="points"><li>Экипажи воюют сами: по тревоге бросают работу, бегут на точку и взлетают; техники собирают, снаряжают и заряжают дроны.</li><li>Связь решает всё. Пять реальных радиокомплектов со своей дальностью и картинкой, а враг перестраивает глушилки под те, на которых вы летаете чаще. Оптоволоконный FPV не боится РЭБ, но тянет кабель через всю карту: перережьте — и дрон ослеп.</li><li>Враг пеленгует ваших операторов, а ваш видеоприёмник показывает, куда летит его FPV.</li><li>Ночные налёты «Шахедов» с пусковых направляющих, ответные удары по карте мира, самолёты класса TB2 с разбегом по взлётной полосе.</li><li>Что подвешено, то и видно: БЧ, сбросы и спутниковый модем нарисованы на дроне. Названия реальных прототипов вашей стороны: украинские, российские или западные.</li><li>ПВО от РЭБ-ружей и сетей до зениток, лазеров, СВЧ и подмены GPS — а своя РЭБ может ослепить свои же дроны.</li></ul>
+
+<p class="foot">Мод — про механику войны дронов, а не про политику.</p>
+</div>
+<div class="gallery"><figure><img src="media/strike.gif" alt="FPV strike" loading="lazy"></figure><figure><img src="media/planeflight.jpg" alt="Rail launch, runway take-off, landing roll-out" loading="lazy"></figure><figure><img src="media/bigdrones.jpg" alt="Big drones by heading" loading="lazy"></figure><figure><img src="media/drop.gif" alt="Drop from a scout" loading="lazy"></figure><figure><img src="media/crew.jpg" alt="A drone crew at its launch point" loading="lazy"></figure><figure><img src="media/lineup.jpg" alt="The drones" loading="lazy"></figure></div>
+</main>
+<script>
+(function () {
+  var langs = document.querySelectorAll('.lang'), buttons = document.querySelectorAll('[data-set]');
+  function show(code) {
+    langs.forEach(function (el) { el.hidden = el.dataset.lang !== code; });
+    buttons.forEach(function (b) { b.classList.toggle('on', b.dataset.set === code); });
+    document.documentElement.lang = code;
+    try { localStorage.setItem('mdw-lang', code); } catch (e) {}
+  }
+  var saved = null;
+  try { saved = localStorage.getItem('mdw-lang'); } catch (e) {}
+  var nav = (navigator.language || 'en').slice(0, 2);
+  show(saved || (nav === 'uk' || nav === 'ru' ? nav : 'en'));
+  buttons.forEach(function (b) { b.addEventListener('click', function () { show(b.dataset.set); }); });
+  document.querySelectorAll('[data-copy]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var label = b.textContent;
+      navigator.clipboard.writeText(b.dataset.copy).then(function () {
+        b.textContent = b.dataset.done; setTimeout(function () { b.textContent = label; }, 1500);
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>
