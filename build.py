@@ -15,7 +15,8 @@ LINKS = json.loads((ROOT / 'links.json').read_text(encoding='utf-8'))
 PREVIEW = Path(sys.argv[sys.argv.index('--preview') + 1]) if '--preview' in sys.argv else None
 if PREVIEW:
     LINKS.update(kofi='https://ko-fi.com/example', monobank='https://send.monobank.ua/jar/example',
-                 funpay='https://funpay.com/users/example/', usdt_trc20='TExampleWalletAddress000000000000000')
+                 funpay='https://funpay.com/users/example/', monobank_card='0000 0000 0000 0000',
+                 usdt_bep20='0x0000000000000000000000000000000000000000')
 
 TEXT = {
     'en': dict(
@@ -37,7 +38,8 @@ TEXT = {
         support='Support the author',
         support_intro='The mod is free and stays free. If you enjoy it and want to help it grow, here is how — thank you!',
         west='International', ua='Ukraine', ru='Russia and CIS', crypto='Crypto',
-        copy='Copy', copied='Copied',
+        copy='Copy', copied='Copied', card='Jar card',
+        bep20='Only USDT on BNB Smart Chain (BEP20) — other networks or tokens will be lost.',
         footer='This mod is about the mechanics of drone warfare, not about politics.',
     ),
     'uk': dict(
@@ -59,7 +61,8 @@ TEXT = {
         support='Підтримати автора',
         support_intro='Мод безкоштовний і таким залишиться. Якщо він вам подобається і ви хочете допомогти йому рости — ось як. Дякую!',
         west='Міжнародні', ua='Україна', ru='Росія та СНД', crypto='Крипта',
-        copy='Копіювати', copied='Скопійовано',
+        copy='Копіювати', copied='Скопійовано', card='Картка банки',
+        bep20='Лише USDT у мережі BNB Smart Chain (BEP20) — інші мережі чи токени буде втрачено.',
         footer='Мод — про механіку війни дронів, а не про політику.',
     ),
     'ru': dict(
@@ -81,7 +84,8 @@ TEXT = {
         support='Поддержать автора',
         support_intro='Мод бесплатный и останется таким. Если он вам нравится и хочется помочь ему расти — вот как. Спасибо!',
         west='Международные', ua='Украина', ru='Россия и СНГ', crypto='Крипта',
-        copy='Копировать', copied='Скопировано',
+        copy='Копировать', copied='Скопировано', card='Карта банки',
+        bep20='Только USDT в сети BNB Smart Chain (BEP20) — другие сети или токены будут потеряны.',
         footer='Мод — про механику войны дронов, а не про политику.',
     ),
 }
@@ -114,14 +118,16 @@ def readme():
     out = [f'<p align="center"><img src="media/preview.png" alt="{t["title"]}" width="640"></p>', '',
            f'# {t["title"]}', '', f'*{t["tagline"]}* — **[{t["workshop"]}]({LINKS["steam"]})**', '']
     links = support_links()
-    if links or LINKS.get('usdt_trc20'):
+    if links or LINKS.get('usdt_bep20'):
         out += [f'## {t["support"]}', '', t['support_intro'], '']
         for key in ('west', 'ua', 'ru'):
             group = [f'[{label}]({url})' for k, label, url in links if k == key]
+            if key == 'ua' and LINKS.get('monobank_card'):
+                group.append(f'{t["card"]} `{LINKS["monobank_card"]}`')
             if group:
                 out.append(f'- **{t[key]}:** ' + ' · '.join(group))
-        if LINKS.get('usdt_trc20'):
-            out.append(f'- **{t["crypto"]} (USDT, TRC20):** `{LINKS["usdt_trc20"]}`')
+        if LINKS.get('usdt_bep20'):
+            out.append(f'- **{t["crypto"]} (USDT, BEP20 / BSC):** `{LINKS["usdt_bep20"]}` — {t["bep20"]}')
         out.append('')
     for lang in ORDER:
         t = TEXT[lang]
@@ -161,12 +167,18 @@ def page():
         for key in ('west', 'ua', 'ru'):
             buttons = ''.join(f'<a class="btn" href="{e(url)}" target="_blank" rel="noopener">{e(label)}</a>'
                               for k, label, url in support_links() if k == key)
-            if buttons:
-                groups.append(f'<div class="group"><h3>{e(t[key])}</h3><div class="row">{buttons}</div></div>')
-        if LINKS.get('usdt_trc20'):
-            groups.append(f'<div class="group"><h3>{e(t["crypto"])} · USDT (TRC20)</h3><div class="row wallet">'
-                          f'<code>{e(LINKS["usdt_trc20"])}</code><button class="btn ghost" data-copy="{e(LINKS["usdt_trc20"])}" '
-                          f'data-done="{e(t["copied"])}">{e(t["copy"])}</button></div></div>')
+            extra = ''
+            if key == 'ua' and LINKS.get('monobank_card'):
+                card = LINKS['monobank_card']
+                extra = (f'<div class="row wallet"><span class="muted">{e(t["card"])}</span><code>{e(card)}</code>'
+                         f'<button class="btn ghost" data-copy="{e(card.replace(" ", ""))}" data-done="{e(t["copied"])}">{e(t["copy"])}</button></div>')
+            if buttons or extra:
+                groups.append(f'<div class="group"><h3>{e(t[key])}</h3><div class="row">{buttons}</div>{extra}</div>')
+        if LINKS.get('usdt_bep20'):
+            addr = LINKS['usdt_bep20']
+            groups.append(f'<div class="group"><h3>{e(t["crypto"])} · USDT (BEP20 / BSC)</h3><div class="row wallet">'
+                          f'<code>{e(addr)}</code><button class="btn ghost" data-copy="{e(addr)}" '
+                          f'data-done="{e(t["copied"])}">{e(t["copy"])}</button></div><p class="note">{e(t["bep20"])}</p></div>')
         support = (f'<section class="support"><h2>{e(t["support"])}</h2><p>{e(t["support_intro"])}</p>{"".join(groups)}</section>'
                    if groups else '')
         points = ''.join(f'<li>{e(p)}</li>' for p in t['points'])
@@ -212,7 +224,10 @@ h3 {{ margin:0 0 8px; font-size:.95rem; color:var(--muted); font-weight:600; }}
 .support {{ background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:4px 20px 18px; margin-top:32px; }}
 .group {{ margin-top:14px; }}
 .row {{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }}
+.wallet {{ margin-top:8px; }}
 .wallet code {{ font-size:.85rem; word-break:break-all; }}
+.muted, .note {{ color:var(--muted); font-size:.9rem; }}
+.note {{ margin:6px 0 0; }}
 .gallery {{ display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:12px; margin-top:28px; }}
 .gallery figure {{ margin:0; }}
 .gallery img {{ width:100%; border-radius:8px; display:block; }}
@@ -271,4 +286,4 @@ if fund:
 elif path.exists():
     path.unlink()
 print('built:', ', '.join(label for _, label, _ in support_links()) or 'no support links yet',
-      '+ crypto' if LINKS.get('usdt_trc20') else '')
+      '+ jar card' if LINKS.get('monobank_card') else '', '+ USDT BEP20' if LINKS.get('usdt_bep20') else '')

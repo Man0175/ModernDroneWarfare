@@ -3,7 +3,8 @@
   "kofi": "",
   "github_sponsors": "",
   "patreon": "",
-  "monobank": "",
-  "funpay": "",
-  "usdt_trc20": ""
+  "monobank": "https://send.monobank.ua/jar/9DhoxpMnqU",
+  "monobank_card": "4874 1000 3495 0520",
+  "funpay": "https://funpay.com/lots/offer?id=79818332",
+  "usdt_bep20": "0x6f64350f5b2781a2c7af12af5cf2f8a24715cf53"
 }

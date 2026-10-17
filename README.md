@@ -4,6 +4,14 @@
 
 *A RimWorld mod* — **[Get it on the Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3818148083)**
 
+## Support the author
+
+The mod is free and stays free. If you enjoy it and want to help it grow, here is how — thank you!
+
+- **Ukraine:** [Monobank](https://send.monobank.ua/jar/9DhoxpMnqU) · Jar card `4874 1000 3495 0520`
+- **Russia and CIS:** [FunPay](https://funpay.com/lots/offer?id=79818332)
+- **Crypto (USDT, BEP20 / BSC):** `0x6f64350f5b2781a2c7af12af5cf2f8a24715cf53` — Only USDT on BNB Smart Chain (BEP20) — other networks or tokens will be lost.
+
 Drone warfare the way it really works: you don't just build drones, you fly them — with crews of pilots, observers and technicians, over a radio link that walls, woods, weather and jamming can break.
 
 ### What may surprise you
