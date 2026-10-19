@@ -88,8 +88,30 @@ TEXT = {
         bep20='Только USDT в сети BNB Smart Chain (BEP20) — другие сети или токены будут потеряны.',
         footer='Мод — про механику войны дронов, а не про политику.',
     ),
+    'zh': dict(
+        name='简体中文',
+        title='现代无人机战争',
+        tagline='RimWorld 模组',
+        intro='还原真实的无人机战争：你不仅要制造无人机，还要驾驶它们——由操控员、观察员和技工组成机组，通过无线电链路进行操控，而墙壁、树林、天气和电子干扰都可能切断链路。',
+        head='可能会让你感到惊喜的内容',
+        points=[
+            '机组自主作战：警报拉响时，他们会放下手头的工作，跑向放飞点并起飞无人机；技工负责制造、装填和为无人机充电。',
+            '链路就是一切。五种真实的无线电套件，各有不同的航程与图传画面，敌人会监听并调整其干扰机，专门针对你最常用的频段。光纤FPV无视干扰，但会在地图上拖拽一根光缆：一旦光缆被割断，无人机就会失去视野。',
+            '敌人会通过无线电测向来猎杀你的操控员；而你的视频接收器也能显示敌方FPV的飞行方向。',
+            '沙赫德 / 天竺葵级别无人机的夜间空袭：监听频道会发出预警，随后一波无人机将扑向你的发电厂。你可以从自己的发射器在世界地图上发起反击，或者在殖民地上空保持一架Bayraktar TB2级别的飞机警戒。',
+            '所见即所挂：战斗部、空投物资和卫星调制解调器都会直接渲染在无人机上。己方装备采用真实的现实原型名称：乌克兰、俄罗斯或西方装备。',
+            '防空手段从干扰枪和捕网，到高射炮、激光、微波和GPS欺骗应有尽有——而且你自己的电子战设备也可能致盲你自己的无人机。',
+        ],
+        workshop='前往 Steam 创意工坊订阅',
+        support='支持作者',
+        support_intro='本模组免费，并将一直免费。如果你喜欢它并想帮助它继续发展，可以通过以下方式支持——谢谢！',
+        west='国际', ua='乌克兰', ru='俄罗斯及独联体', crypto='加密货币',
+        copy='复制', copied='已复制', card='募捐罐卡号',
+        bep20='仅限 BNB 智能链（BEP20）上的 USDT——其他网络或代币将会丢失。',
+        footer='本模组探讨的是无人机战争的机制，无关政治。简体中文翻译：洛阳花落。',
+    ),
 }
-ORDER = ['en', 'uk', 'ru']
+ORDER = ['en', 'uk', 'ru', 'zh']
 MEDIA = [('media/strike.gif', 'FPV strike'), ('media/planeflight.jpg', 'Rail launch, runway take-off, landing roll-out'),
          ('media/bigdrones.jpg', 'Big drones by heading'), ('media/drop.gif', 'Drop from a scout'),
          ('media/crew.jpg', 'A drone crew at its launch point'), ('media/lineup.jpg', 'The drones')]
@@ -253,7 +275,7 @@ h3 {{ margin:0 0 8px; font-size:.95rem; color:var(--muted); font-weight:600; }}
   var saved = null;
   try {{ saved = localStorage.getItem('mdw-lang'); }} catch (e) {{}}
   var nav = (navigator.language || 'en').slice(0, 2);
-  show(saved || (nav === 'uk' || nav === 'ru' ? nav : 'en'));
+  show(saved || (nav === 'uk' || nav === 'ru' || nav === 'zh' ? nav : 'en'));
   buttons.forEach(function (b) {{ b.addEventListener('click', function () {{ show(b.dataset.set); }}); }});
   document.querySelectorAll('[data-copy]').forEach(function (b) {{
     b.addEventListener('click', function () {{
