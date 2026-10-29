@@ -35,6 +35,7 @@ TEXT = {
             'Air defense from jammer guns and nets to flak, lasers, microwaves and GPS spoofing — and your own EW can blind your own drones.',
         ],
         workshop='Get it on the Steam Workshop',
+        manual='Manual',
         support='Support the author',
         support_intro='The mod is free and stays free. If you enjoy it and want to help it grow, here is how — thank you!',
         west='International', ua='Ukraine', ru='Russia and CIS', crypto='Crypto',
@@ -58,6 +59,7 @@ TEXT = {
             'ППО від РЕБ-рушниць і сіток до зеніток, лазерів, НВЧ і підміни GPS — а своя РЕБ може осліпити власні дрони.',
         ],
         workshop='Завантажити в Steam Workshop',
+        manual='Посібник',
         support='Підтримати автора',
         support_intro='Мод безкоштовний і таким залишиться. Якщо він вам подобається і ви хочете допомогти йому рости — ось як. Дякую!',
         west='Міжнародні', ua='Україна', ru='Росія та СНД', crypto='Крипта',
@@ -81,6 +83,7 @@ TEXT = {
             'ПВО от РЭБ-ружей и сетей до зениток, лазеров, СВЧ и подмены GPS — а своя РЭБ может ослепить свои же дроны.',
         ],
         workshop='Скачать в Steam Workshop',
+        manual='Руководство',
         support='Поддержать автора',
         support_intro='Мод бесплатный и останется таким. Если он вам нравится и хочется помочь ему расти — вот как. Спасибо!',
         west='Международные', ua='Украина', ru='Россия и СНГ', crypto='Крипта',
@@ -103,6 +106,7 @@ TEXT = {
             '防空手段从干扰枪和捕网，到高射炮、激光、微波和GPS欺骗应有尽有——而且你自己的电子战设备也可能致盲你自己的无人机。',
         ],
         workshop='前往 Steam 创意工坊订阅',
+        manual='手册',
         support='支持作者',
         support_intro='本模组免费，并将一直免费。如果你喜欢它并想帮助它继续发展，可以通过以下方式支持——谢谢！',
         west='国际', ua='乌克兰', ru='俄罗斯及独联体', crypto='加密货币',
@@ -208,6 +212,7 @@ def page():
 <header><img class="icon" src="media/icon.png" alt=""><div><h1>{e(t["title"])}</h1><p class="tag">{e(t["tagline"])}</p></div></header>
 <p class="intro">{e(t["intro"])}</p>
 <a class="btn primary" href="{e(LINKS["steam"])}" target="_blank" rel="noopener">{e(t["workshop"])}</a>
+<a class="btn" href="manual.html">{e(t["manual"])}</a>
 <h2>{e(t["head"])}</h2><ul class="points">{points}</ul>
 {support}
 <p class="foot">{e(t["footer"])}</p>
