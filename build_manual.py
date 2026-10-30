@@ -13,10 +13,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 MOD = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT.parent / 'ModernWAR'
 CHAPTERS = ['Start', 'Link', 'EW', 'Drones', 'Warheads', 'Crews', 'Defence', 'Enemy', 'LongRange', 'Ground', 'DLC', 'Settings']
-LANGS = [('en', 'English', 'English'), ('uk', 'Українська', 'Ukrainian (Українська)'), ('ru', 'Русский', 'Russian (Русский)'),
-         ('zh', '简体中文', 'ChineseSimplified (简体中文)')]
+LANGS = [('en', 'English', 'English'), ('es', 'Español', 'Spanish (Español(Castellano))'), ('uk', 'Українська', 'Ukrainian (Українська)'),
+         ('ru', 'Русский', 'Russian (Русский)'), ('zh', '简体中文', 'ChineseSimplified (简体中文)')]
 UI = {
     'en': dict(back='← Mod page', contents='Contents', note='The same manual is in the game: the Drones tab and the mod settings.'),
+    'es': dict(back='← Página del mod', contents='Contenido', note='El mismo manual está en el juego: la pestaña «Drones» y los ajustes del mod.'),
     'uk': dict(back='← Сторінка мода', contents='Зміст', note='Той самий посібник є в грі: вкладка «Дрони» і налаштування мода.'),
     'ru': dict(back='← Страница мода', contents='Содержание', note='То же руководство есть в игре: вкладка «Дроны» и настройки мода.'),
     'zh': dict(back='← 模组主页', contents='目录', note='游戏内也有同样的手册：在“无人机”标签页和模组设置中。'),
@@ -63,7 +64,9 @@ def main():
         toc = ''.join(f'<li><a href="#{code}-{c}">{e(texts.get(f"MDW_Manual_{c}_Title", c))}</a></li>' for c in CHAPTERS)
         chapters = []
         for c in CHAPTERS:
-            pic = f'<img src="media/manual/{c}.jpg" alt="" loading="lazy">' if c in have else ''
+            full = f'media/manual/full/{c}.jpg' if (pictures / 'full' / f'{c}.jpg').exists() else f'media/manual/{c}.jpg'
+            title = e(texts.get(f"MDW_Manual_{c}_Title", c))
+            pic = f'<img src="media/manual/{c}.jpg" alt="{title}" data-full="{full}" loading="lazy">' if c in have else ''
             chapters.append(f'<section id="{code}-{c}"><h2>{e(texts.get(f"MDW_Manual_{c}_Title", c))}</h2>{pic}'
                             f'{render(texts.get(f"MDW_Manual_{c}_Text", ""))}</section>')
         blocks.append(f'''<div class="lang" data-lang="{code}" lang="{code}" hidden>
@@ -111,6 +114,7 @@ li {{ margin:4px 0; }}
 <nav class="switch">{switch}</nav>
 {"".join(blocks)}
 </main>
+<script src="lightbox.js"></script>
 <script>
 (function () {{
   var langs = document.querySelectorAll('.lang'), buttons = document.querySelectorAll('[data-set]');
@@ -123,7 +127,7 @@ li {{ margin:4px 0; }}
   var saved = null;
   try {{ saved = localStorage.getItem('mdw-lang'); }} catch (e) {{}}
   var nav = (navigator.language || 'en').slice(0, 2);
-  show(saved || (nav === 'uk' || nav === 'ru' || nav === 'zh' ? nav : 'en'));
+  show(saved || (nav === 'uk' || nav === 'ru' || nav === 'zh' || nav === 'es' ? nav : 'en'));
   buttons.forEach(function (b) {{ b.addEventListener('click', function () {{ show(b.dataset.set); }}); }});
 }})();
 </script>

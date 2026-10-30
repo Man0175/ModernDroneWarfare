@@ -23,6 +23,21 @@ Drone warfare the way it really works: you don't just build drones, you fly them
 - What is mounted is what you see: warheads, drops and the satellite modem are drawn on the drone. Real prototype names for your side: Ukrainian, Russian or Western.
 - Air defense from jammer guns and nets to flak, lasers, microwaves and GPS spoofing — and your own EW can blind your own drones.
 
+<details><summary><b>Español — Modern Drone Warfare</b></summary>
+
+La guerra de drones tal y como funciona de verdad: no basta con fabricar drones, hay que pilotarlos, con dotaciones de pilotos, observadores y técnicos, a través de un enlace de radio que pueden cortar muros, bosques, el clima y la guerra electrónica.
+
+### Lo que puede sorprenderte
+
+- Las dotaciones combaten solas: con la alarma dejan su trabajo, corren al punto de lanzamiento y despegan; los técnicos fabrican, arman y cargan los drones.
+- El enlace lo es todo. Cinco kits de radio reales, cada uno con su alcance y su imagen, y el enemigo resintoniza sus inhibidores a los que más usas. Los FPV de fibra óptica ignoran la interferencia, pero arrastran un cable por el mapa: córtalo y el dron queda ciego.
+- El enemigo caza a tus operadores por radiogoniometría; tu receptor de vídeo muestra hacia dónde va su FPV.
+- Ataques nocturnos de drones tipo Shahed / Geran lanzados desde rampas, contraataques en el mapa del mundo, aviones tipo TB2 que despegan desde una pista.
+- Lo que lleva montado es lo que ves: ojivas, cargas de lanzamiento y el módem satelital se dibujan sobre el dron. Nombres de prototipos reales para tu bando: ucraniano, ruso u occidental.
+- Defensa antiaérea desde fusiles inhibidores y redes hasta antiaéreos, láseres, microondas y suplantación de GPS; y tu propia guerra electrónica puede cegar a tus propios drones.
+
+</details>
+
 <details><summary><b>Українська — Сучасна безпілотна війна</b></summary>
 
 Війна дронів така, якою вона є: дрони мало збудувати, ними треба літати — розрахунками з пілотів, спостерігачів і техніків, через радіозв'язок, який рвуть стіни, ліс, погода й РЕБ.

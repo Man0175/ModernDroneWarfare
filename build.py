@@ -114,8 +114,32 @@ TEXT = {
         bep20='仅限 BNB 智能链（BEP20）上的 USDT——其他网络或代币将会丢失。',
         footer='本模组探讨的是无人机战争的机制，无关政治。简体中文翻译：洛阳花落。',
     ),
+    'es': dict(
+        name='Español',
+        title='Modern Drone Warfare',
+        tagline='Un mod para RimWorld',
+        intro="La guerra de drones tal y como funciona de verdad: no basta con fabricar drones, hay que pilotarlos, con dotaciones "
+              "de pilotos, observadores y técnicos, a través de un enlace de radio que pueden cortar muros, bosques, el clima y la guerra electrónica.",
+        head='Lo que puede sorprenderte',
+        points=[
+            'Las dotaciones combaten solas: con la alarma dejan su trabajo, corren al punto de lanzamiento y despegan; los técnicos fabrican, arman y cargan los drones.',
+            'El enlace lo es todo. Cinco kits de radio reales, cada uno con su alcance y su imagen, y el enemigo resintoniza sus inhibidores a los que más usas. Los FPV de fibra óptica ignoran la interferencia, pero arrastran un cable por el mapa: córtalo y el dron queda ciego.',
+            'El enemigo caza a tus operadores por radiogoniometría; tu receptor de vídeo muestra hacia dónde va su FPV.',
+            'Ataques nocturnos de drones tipo Shahed / Geran lanzados desde rampas, contraataques en el mapa del mundo, aviones tipo TB2 que despegan desde una pista.',
+            'Lo que lleva montado es lo que ves: ojivas, cargas de lanzamiento y el módem satelital se dibujan sobre el dron. Nombres de prototipos reales para tu bando: ucraniano, ruso u occidental.',
+            'Defensa antiaérea desde fusiles inhibidores y redes hasta antiaéreos, láseres, microondas y suplantación de GPS; y tu propia guerra electrónica puede cegar a tus propios drones.',
+        ],
+        workshop='Descárgalo en Steam Workshop',
+        manual='Manual',
+        support='Apoya al autor',
+        support_intro='El mod es gratuito y lo seguirá siendo. Si te gusta y quieres ayudarlo a crecer, así puedes hacerlo. ¡Gracias!',
+        west='Internacional', ua='Ucrania', ru='Rusia y la CEI', crypto='Cripto',
+        copy='Copiar', copied='Copiado', card='Tarjeta de la hucha',
+        bep20='Solo USDT en BNB Smart Chain (BEP20): otras redes o tokens se perderán.',
+        footer='Este mod trata de la mecánica de la guerra de drones, no de política.',
+    ),
 }
-ORDER = ['en', 'uk', 'ru', 'zh']
+ORDER = ['en', 'es', 'uk', 'ru', 'zh']
 MEDIA = [('media/strike.gif', 'FPV strike'), ('media/planeflight.jpg', 'Rail launch, runway take-off, landing roll-out'),
          ('media/bigdrones.jpg', 'Big drones by heading'), ('media/drop.gif', 'Drop from a scout'),
          ('media/crew.jpg', 'A drone crew at its launch point'), ('media/lineup.jpg', 'The drones')]
@@ -217,7 +241,7 @@ def page():
 {support}
 <p class="foot">{e(t["footer"])}</p>
 </div>''')
-    gallery = ''.join(f'<figure><img src="{src}" alt="{e(alt)}" loading="lazy"></figure>' for src, alt in MEDIA)
+    gallery = ''.join(f'<figure><img src="{src}" alt="{e(alt)}" data-full="{src}" loading="lazy"></figure>' for src, alt in MEDIA)
     switch = ''.join(f'<button data-set="{lang}">{e(TEXT[lang]["name"])}</button>' for lang in ORDER)
     return f'''<!doctype html>
 <html lang="en">
@@ -264,10 +288,11 @@ h3 {{ margin:0 0 8px; font-size:.95rem; color:var(--muted); font-weight:600; }}
 <body>
 <main>
 <nav class="switch">{switch}</nav>
-<div class="hero"><img src="media/preview.png" alt="Modern Drone Warfare"></div>
+<div class="hero"><img src="media/preview.png" alt="Modern Drone Warfare" data-full="media/preview.png"></div>
 {"".join(langs)}
 <div class="gallery">{gallery}</div>
 </main>
+<script src="lightbox.js"></script>
 <script>
 (function () {{
   var langs = document.querySelectorAll('.lang'), buttons = document.querySelectorAll('[data-set]');
@@ -280,7 +305,7 @@ h3 {{ margin:0 0 8px; font-size:.95rem; color:var(--muted); font-weight:600; }}
   var saved = null;
   try {{ saved = localStorage.getItem('mdw-lang'); }} catch (e) {{}}
   var nav = (navigator.language || 'en').slice(0, 2);
-  show(saved || (nav === 'uk' || nav === 'ru' || nav === 'zh' ? nav : 'en'));
+  show(saved || (nav === 'uk' || nav === 'ru' || nav === 'zh' || nav === 'es' ? nav : 'en'));
   buttons.forEach(function (b) {{ b.addEventListener('click', function () {{ show(b.dataset.set); }}); }});
   document.querySelectorAll('[data-copy]').forEach(function (b) {{
     b.addEventListener('click', function () {{
