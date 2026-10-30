@@ -6,7 +6,7 @@
     '[data-full]{cursor:zoom-in}' +
     '.lb{position:fixed;inset:0;z-index:50;background:rgba(8,10,12,.92);display:flex;align-items:center;justify-content:center;flex-direction:column;padding:16px}' +
     '.lb[hidden]{display:none}' +
-    '.lb img{max-width:100%;max-height:calc(100vh - 80px);border-radius:6px;box-shadow:0 8px 40px rgba(0,0,0,.6)}' +
+    '.lb img{width:100%;height:calc(100vh - 80px);object-fit:contain}' +
     '.lb p{color:#e7e4dc;margin:10px 0 0;font:15px/1.4 system-ui,sans-serif;text-align:center}' +
     '.lb button{position:absolute;background:rgba(0,0,0,.45);color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:8px;' +
     'font:22px/1 system-ui,sans-serif;width:44px;height:44px;cursor:pointer}' +
